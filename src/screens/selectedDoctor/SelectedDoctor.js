@@ -1,6 +1,6 @@
 import React, { createRef, useEffect, useState } from "react";
 // import {Calender} from '@fullcalendar/core'
-import FullCalendar, { CalendarApi } from "@fullcalendar/react";
+import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridWeek from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction"; // needed for dayClick
@@ -94,7 +94,7 @@ const SelectedDoctor = (props) => {
       }
     } else if (Cookies.get("details")) {
       let item = JSON.parse(Cookies.get("details"));
-      console.log(item.item.availibility);
+      // console.log(item.item.availibility);
       if (item.item.availibility) {
         // console.log(props.location.details.item.availibility)
 
@@ -133,7 +133,7 @@ const SelectedDoctor = (props) => {
 
   useEffect(() => {
     if (month) {
-      console.log(month);
+      // console.log(month);
       let monthYearSelect = month.split(" ");
       let monthSelect = months.findIndex((obj) => obj === monthYearSelect[0]);
 
@@ -151,7 +151,7 @@ const SelectedDoctor = (props) => {
           //    console.log(keys)
           //  }
 
-          console.log(typeof item.toString(), selectedDays);
+          // console.log(typeof item.toString(), selectedDays);
           let eventDetails = selectedDays.find((obj) => obj.day === day[0]);
           if (eventDetails) {
             var currentDate = new Date();
@@ -176,7 +176,7 @@ const SelectedDoctor = (props) => {
         });
       }
 
-      console.log(dates);
+      // console.log(dates);
       // setEvents({ title: "event 1", date: "2021-03-19" });
     }
   }, [month]);
@@ -193,7 +193,7 @@ const SelectedDoctor = (props) => {
       clickedDate(arg.dateStr);
       let d = new Date(arg.dateStr);
       const appointedDay = days[d.getDay()];
-      console.log(appointedDay);
+      // console.log(appointedDay);
       let appointedDetails = selectedDays.find(
         (obj) => obj.day === appointedDay
       );
@@ -202,12 +202,12 @@ const SelectedDoctor = (props) => {
       let x = appointedDetails.visitTime; //minutes interval
       let times = []; // time array
       let startTime = appointedTime[0].split(":");
-      console.log(startTime); // start time
+      // console.log(startTime); // start time
       let ap = ["AM", "PM"]; // AM-PM
       let endTime = appointedTime[3].split(":");
 
       let startMin = Number(startTime[1]),
-        endMin = Number(endTime[1]),
+        // endMin = Number(endTime[1]),
         startHour = Number(startTime[0]),
         endHour = Number(endTime[0]),
         timeType = appointedTime[1];
@@ -238,10 +238,10 @@ const SelectedDoctor = (props) => {
       }
       setSuccess(false);
       setShow(true);
-      console.log(times);
+      // console.log(times);
       setAppointed(times);
 
-      console.log(calendarRef);
+      // console.log(calendarRef);
     }
   }
 
@@ -249,7 +249,7 @@ const SelectedDoctor = (props) => {
 
   function getDaysInMonth(month, year) {
     var date = new Date(year, month);
-    console.log(date);
+    // console.log(date);
     var days = [];
     while (date.getMonth() === month) {
       days.push(new Date(date));
@@ -260,7 +260,7 @@ const SelectedDoctor = (props) => {
 
   //modal management
 
-  const handleUserOpen = () => setUserShow(true);
+  // const handleUserOpen = () => setUserShow(true);
   const handleUserClose = () => {
     setUserShow(false);
     setEvents((prevState) => [
@@ -274,7 +274,7 @@ const SelectedDoctor = (props) => {
   };
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
 
     setSuccess(true);
   };
@@ -290,14 +290,14 @@ const SelectedDoctor = (props) => {
     setShow(false);
   };
 
-  const handleSuccessClose = () => {
-    setSuccess(true);
-  };
+  // const handleSuccessClose = () => {
+  //   setSuccess(true);
+  // };
 
   const handleHeaderSuccessClose = () => {
     setUserShow(false);
   };
-  const handleShow = () => setShow(true);
+  // const handleShow = () => setShow(true);
 
   //getting doc details
 

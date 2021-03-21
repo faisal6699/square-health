@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { doctorListActions } from "../../redux/actions/doctorListActions";
 import "./_doctorlist.scss";
@@ -7,13 +7,13 @@ import femaleDoc from "../../assets/pics/femaleDoc.jpg";
 import { Link } from "react-router-dom";
 
 const DoctorList = () => {
-  const [doctors, setDoctors] = useState(false);
+  // const [doctors, setDoctors] = useState(false);
   const dispatch = useDispatch();
 
   const { loading, doctorInfo } = useSelector((state) => state.doctorList);
-  if (doctorInfo) {
-    console.log(doctorInfo);
-  }
+  // if (doctorInfo) {
+  //   console.log(doctorInfo);
+  // }
 
   useEffect(() => {
     dispatch(doctorListActions());
